@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/img/math-icon-png-24.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <title>Площа еліпса</title>
+</head>
+<body>
+    <header>
+        <div class="header__container">
+            <div class="title"><img src="./assets/img/math-icon-png-24.jpg" alt="">
+                <div>
+                    Math for everyone
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="gblock">
+            <div>
+                <div class="main__container">
+                    <div class="main__container-calc">
+                        <div class="main__container-title">Онлайн калькулятор. Площа еліпса</div>
+                        <div class="calc-title">Введіть довжини великої і малої піввісі еліпса:</div>
+                        <div class="calc__sideA-container">a = <input id="sideA" type="number"><select id="optionA"><option value="m">м</option><option value="cm">cm</option><option value="mm">мм</option></select></div>
+                        <div class="calc__sideB-container">b = <input id="sideB" type="number"><select id="optionB"><option value="m">м</option><option value="cm">cm</option><option value="mm">мм</option></select></div>
+                        <div class="calc__sidePi-container">π = <select id="pi"><option value="3.14">3.14</option><option value="3.141">3.141</option><option value="3.1415">3.1415</option><option value="3.14159">3.14159</option><option value="3.141592">3.141592</option><option value="3.1415926">3.1415926</option><option value="3.14159265">3.14159265</option><option value="3.141592653">3.141592653</option><option value="3.1415926535">3.1415926535</option></select></div>
+                        <div class="calc__square-container">Площа в <select id="square"><option value="m²">м²</option><option value="cm²">см²</option><option value="mm²">мм²</option></select></div>
+                        <div class="calc__btn-container"><button id="result">Показати відповідь</button></div>
+                    </div>
+                    <div class="img-cont"><img src="./assets/img/ovals.png" alt="ovals.ong | Вибачте, але щось пішло не так як хотілося!"></div>
+                </div>
+                <div id="containerRes" class="main__container-result">
+                    <div id="contentRes" class="result-content">
+                        <div class="result-title">Результат :</div>
+                        <div class="result">S = π a b = <span id="resultPi"></span> <span id="resultA"></span> <span id="resultB"></span> = <span id="resultPiSecond"></span> <span id="equal"></span> ( <span id="metersOfLengthSquare"></span> ) = <span id="res"></span> ( <span id="metersOfLengthSquareSec"></span> )</div>
+                    </div>
+                </div>
+            </div>
+            <div class="main__contaier-theory">
+                <div class="theory-tabs">
+                    <div class="theory-tabOne" id="theoryTabOne" onclick="theoryTabOneFunc()">Інструкція</div>
+                    <div class="theory-tabTwo" id="theoryTabTwo" onclick="theoryTabTwoFunc()">Теорія</div>
+                </div>
+                <div class="theory-blocks" id="theoryBlocks">
+                    <div class="theory-blockOne" id="theoryBlockOne">
+                        Для обчислення площі еліпса:<li>введіть довжини більшої та меншої піввісей еліпса;</li><li>оберіть одиниці виміру довжин метр (м), сантиметр (см) або міліметр (мм);</li><li>оберіть скільки знаків після коми враховувати в числі π під час обрахунків.</li><li>оберіть в яких одиницях виміру необхідно отримати площу: квадратні метри (м2), квадратні сантиметри (см2) або квадратні міліметри (мм2).</li>
+                    </div>
+                    <div class="theory-blockTwo" id="theoryBlockTwo">
+                        <b>Еліпс</b> - геометричне місце точок, сума відстаней, від яких до двох заданих точок F1 і F2, які називаються фокусами еліпса, є стала величина, більша ніж відстань між цими точками F1F2. Коло є частковим випадком еліпса. <br>
+                        Формула для обчислення площі еліпса:
+                        <br>            
+                        S = π a b <br>
+                        де S - площа еліпса, <br>
+                        a - довжина великої піввісі еліпса, <br>
+                        b - довжина малої піввісі еліпса, <br>
+                        π = 3.141592.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./main.js"></script>
+</body>
+</html>
