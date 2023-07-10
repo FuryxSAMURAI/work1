@@ -1,126 +1,198 @@
-let sideA = document.getElementById('sideA')
-let resA = document.getElementById('resultA')
-sideA.value=0
-resA.innerHTML = sideA.value
-sideA.oninput = function(){
-    console.log(sideA.value);
-    resA.innerHTML = sideA.value
-    equal.innerHTML = resA.textContent * resB.textContent
-    res.innerHTML = pi.value * equal.textContent
-}
-let resTranA = 0 // translate to ...
-optionA.onchange = function(){
-    if (optionA.value == 'm') {
-        resA.textContent = sideA.value
-        equal.innerHTML = resA.textContent * resB.textContent
-        res.innerHTML = pi.value * equal.textContent
-    }else if(optionA.value == 'cm'){
-        resTranA = sideA.value
-        resTranA /=100
-        resA.textContent = resTranA
-        equal.innerHTML = resA.textContent * resB.textContent
-        res.innerHTML = pi.value * equal.textContent
-    }else if(optionA.value == 'mm'){
-        resTranA = sideA.value
-        resTranA /=1000
-        resA.textContent = resTranA
-        equal.innerHTML = resA.textContent * resB.textContent
-        res.innerHTML = pi.value * equal.textContent
-    }
-}
+let sideA = document.getElementById("sideA");
+let resultA = document.getElementById("resultA");
+let blockTranslate = document.getElementById("blockTranslate");
+let resATrtans = document.getElementById("resATrtans");
+let resAMeters = document.getElementById("resAMeters");
+let resATrtanslteded = document.getElementById("resATrtanslteded");
+let resAMetersTrtanslteded = document.getElementById("resAMetersTrtanslteded");
 
-let sideB = document.getElementById('sideB')
-let resB = document.getElementById('resultB')
-sideB.value=0
-resB.innerHTML = sideB.value
-sideB.oninput = function(){
-    resB.innerHTML = sideB.value
-    equal.innerHTML = resA.textContent * resB.textContent
-    res.innerHTML = pi.value * equal.textContent
-    console.log(resB.textContent);
-}
-let resTranB = 0 // translate to ...
-optionB.onchange = function(){
-    if (optionB.value == 'm') {
-        resB.textContent = sideB.value
-        equal.innerHTML = resA.textContent * resB.textContent
-        res.innerHTML = pi.value * equal.textContent
-    }else if(optionB.value == 'cm'){
-        resTranB = sideB.value
-        resTranB /=100
-        resB.textContent = resTranB
-        equal.innerHTML = resA.textContent * resB.textContent
-        res.innerHTML = pi.value * equal.textContent
-    }else if(optionB.value == 'mm'){
-        resTranB = sideB.value
-        resTranB /=1000
-        resB.textContent = resTranB
-        equal.innerHTML = resA.textContent * resB.textContent
-        res.innerHTML = pi.value * equal.textContent
-    }
-    
-}
+sideA.value = 0;
+resultA.innerHTML = sideA.value;
+sideA.oninput = function () {
+  console.log("sideA = " + sideA.value);
+  resultA.innerHTML = sideA.value;
+  equal.innerHTML = resultA.textContent * resultB.textContent;
+  res.innerHTML = resultPiSec.textContent * equal.textContent;
+};
+let sideAmeters = document.getElementById("optionA");
+let metersATranlated = 0;
+sideAmeters.onchange = function () {
+  if (sideAmeters.value == "m") {
+    metersATranlated = sideA.value;
+    blockTranslate.style.display = "none";
+    resultA.innerHTML = metersATranlated;
+    equal.innerHTML = resultA.textContent * resultB.textContent;
+    res.innerHTML = resultPiSec.textContent * equal.textContent;
+  }
+  if (sideAmeters.value == "cm") {
+    console.log(sideAmeters.value);
+    blockTranslate.style.display = "block";
+    resATrtans.innerHTML = sideA.value;
+    resAMeters.innerHTML = "см";
+    resATrtanslteded.innerHTML = sideA.value / 100;
+    resAMetersTrtanslteded.innerHTML = "м";
 
-let pi = document.getElementById('pi')
-let restPi = document.getElementById('resultPi')
-let piTrans = 0 // translate to ...
-restPi.innerHTML = pi.value
-pi.onchange = function(){    
-    restPi.innerHTML = pi.value
-    resultPiSecond.innerHTML = pi.value
-    res.innerHTML = pi.value * equal.textContent
-}
+    metersATranlated = sideA.value / 100;
+    resultA.innerHTML = metersATranlated;
+    equal.innerHTML = resultA.textContent * resultB.textContent;
+    res.innerHTML = resultPiSec.textContent * equal.textContent;
+  }
+  if (sideAmeters.value == "mm") {
+    blockTranslate.style.display = "block";
+    resATrtans.innerHTML = sideA.value;
+    resAMeters.innerHTML = "мм";
+    resATrtanslteded.innerHTML = sideA.value / 1000;
+    resAMetersTrtanslteded.innerHTML = "м";
 
-let square = document.getElementById('square')
-square.onchange = function(){
-    if (pi.value == 'm²') {
-        
-    }else if(pi.value == 'cm²'){
-    
-    }else if(pi.value == 'mm²'){
-        
-    }
-    metersOfLengthSquare.innerHTML = square.value
-    metersOfLengthSquareSec.innerHTML = square.value
-}
+    metersATranlated = sideA.value / 1000;
+    resultA.innerHTML = metersATranlated;
+    equal.innerHTML = resultA.textContent * resultB.textContent;
+    res.innerHTML = resultPiSec.textContent * equal.textContent;
+  }
+  console.log("sideAmeters trans = " + metersATranlated);
+};
 
-let equal = document.getElementById('equal')
-let res = document.getElementById('res')
-let resultPiSecond = document.getElementById('resultPiSecond')
-var metersOfLengthSquare = document.getElementById('metersOfLengthSquare')
-var metersOfLengthSquareSec = document.getElementById('metersOfLengthSquareSec')
-metersOfLengthSquare.innerHTML = square.value
-metersOfLengthSquareSec.innerHTML = square.value
-resultPiSecond.innerHTML = pi.value
-equal.innerHTML = resA.textContent * resB.textContent
-res.innerHTML = pi.value * equal.textContent
+let sideB = document.getElementById("sideB");
+let resultB = document.getElementById("resultB");
+let resBTrtans = document.getElementById("resBTrtans");
+let resBMeters = document.getElementById("resBMeters");
+let resBTrtanslteded = document.getElementById("resBTrtanslteded");
+let resBMetersTrtanslteded = document.getElementById("resBMetersTrtanslteded");
 
+sideB.value = 0;
+resultB.innerHTML = sideB.value;
+sideB.oninput = function () {
+  console.log("sideB = " + sideB.value);
+  resultB.innerHTML = sideB.value;
+  equal.innerHTML = resultA.textContent * resultB.textContent;
+  res.innerHTML = resultPiSec.textContent * equal.textContent;
+};
+let sideBmeters = document.getElementById("optionB");
+let metersBTranlated = 0;
+sideBmeters.onchange = function () {
+  if (sideBmeters.value == "m") {
+    blockTranslate.style.display = "none";
+    metersBTranlated = sideB.value;
+    resultB.innerHTML = metersBTranlated;
+    equal.innerHTML = resultA.textContent * resultB.textContent;
+    res.innerHTML = resultPiSec.textContent * equal.textContent;
+  }
+  if (sideBmeters.value == "cm") {
+    blockTranslate.style.display = "block";
+    resBTrtans.innerHTML = sideA.value;
+    resBMeters.innerHTML = "см";
+    resBTrtanslteded.innerHTML = sideA.value / 100;
+    resBMetersTrtanslteded.innerHTML = "м";
+
+    metersBTranlated = sideB.value / 100;
+    resultB.innerHTML = metersBTranlated;
+    equal.innerHTML = resultA.textContent * resultB.textContent;
+    res.innerHTML = resultPiSec.textContent * equal.textContent;
+  }
+  if (sideBmeters.value == "mm") {
+    blockTranslate.style.display = "block";
+    resBTrtans.innerHTML = sideB.value;
+    resBMeters.innerHTML = "мм";
+    resBTrtanslteded.innerHTML = sideB.value / 1000;
+    resBMetersTrtanslteded.innerHTML = "м";
+
+    metersBTranlated = sideB.value / 1000;
+    resultB.innerHTML = metersBTranlated;
+    equal.innerHTML = resultA.textContent * resultB.textContent;
+    res.innerHTML = resultPiSec.textContent * equal.textContent;
+  }
+  console.log("sideBmeters trans = " + metersBTranlated);
+};
+
+let pi = document.getElementById("pi");
+let resultPi = document.getElementById("resultPi");
+let resultPiSec = document.getElementById("resultPiSec");
+resultPi.innerHTML = pi.value;
+resultPiSec.innerHTML = pi.value;
+pi.onchange = function () {
+  console.log("pi = " + pi.value);
+  resultPi.innerHTML = pi.value;
+  resultPiSec.innerHTML = pi.value;
+  res.innerHTML = resultPiSec.textContent * equal.textContent;
+};
+
+let square = document.getElementById("square");
+let metersOfLengthSquare = document.getElementById("metersOfLengthSquare");
+let metersOfLengthSquareSec = document.getElementById(
+  "metersOfLengthSquareSec"
+);
+metersOfLengthSquare.innerHTML = "м²";
+metersOfLengthSquareSec.innerHTML = "м²";
+square.onchange = function () {
+  if (square.value == "m²") {
+    metersOfLengthSquare.innerHTML = "м²";
+    metersOfLengthSquareSec.innerHTML = "м²";
+  }
+  if (square.value == "cm²") {
+    metersOfLengthSquare.innerHTML = "см²";
+    metersOfLengthSquareSec.innerHTML = "см²";
+
+    blockTranslate.style.display = "block";
+    resATrtans.innerHTML = sideA.value;
+    resAMeters.innerHTML = "м";
+    resATrtanslteded.innerHTML = sideA.value * 100;
+    resAMetersTrtanslteded.innerHTML = "см";
+
+    resBTrtans.innerHTML = sideB.value;
+    resBMeters.innerHTML = "м";
+    resBTrtanslteded.innerHTML = sideB.value * 100;
+    resBMetersTrtanslteded.innerHTML = "см";
+  }
+  if (square.value == "mm²") {
+    metersOfLengthSquare.innerHTML = "мм²";
+    metersOfLengthSquareSec.innerHTML = "мм²";
+
+    blockTranslate.style.display = "block";
+    resATrtans.innerHTML = sideA.value;
+    resAMeters.innerHTML = "м";
+    resATrtanslteded.innerHTML = sideA.value * 1000;
+    resAMetersTrtanslteded.innerHTML = "мм";
+
+    resBTrtans.innerHTML = sideB.value;
+    resBMeters.innerHTML = "м";
+    resBTrtanslteded.innerHTML = sideB.value * 1000;
+    resBMetersTrtanslteded.innerHTML = "мм";
+  }
+};
+
+// result
+let equal = document.getElementById("equal");
+let res = document.getElementById("res");
+equal.innerHTML = resultA.textContent * resultB.textContent;
+res.innerHTML = resultPiSec.textContent * equal.textContent;
+
+console.log("res - " + res.length);
 
 // result block
 
-const result = document.getElementById('result')
-const block = document.getElementById('containerRes')
-const contentBlock = document.getElementById('contentRes')
-result.onclick = function(){
-    block.style.height = '30%'
-    contentBlock.style.opacity = '1'
-}
+const result = document.getElementById("result");
+const block = document.getElementById("containerRes");
+const contentBlock = document.getElementById("contentRes");
+result.onclick = function () {
+  block.style.height = "30%";
+  contentBlock.style.opacity = "1";
+};
 
 // theory
-let theoryBlocks = document.getElementById('theoryBlocks')
-let theoryTabOne = document.getElementById('theoryTabOne')
-let theoryBlockOne = document.getElementById('theoryBlockOne')
+let theoryBlocks = document.getElementById("theoryBlocks");
+let theoryTabOne = document.getElementById("theoryTabOne");
+let theoryBlockOne = document.getElementById("theoryBlockOne");
 function theoryTabOneFunc() {
-    theoryTabOne.style.fontWeight = 'bold'
-    theoryTabTwo.style.fontWeight = '400'
-    theoryBlockOne.style.cssText = 'display:block'
-    theoryBlockTwo.style.cssText = 'display:none'
+  theoryTabOne.style.fontWeight = "bold";
+  theoryTabTwo.style.fontWeight = "400";
+  theoryBlockOne.style.cssText = "display:block";
+  theoryBlockTwo.style.cssText = "display:none";
 }
-let theoryTabTwo = document.getElementById('theoryTabTwo')
-let theoryBlockTwo = document.getElementById('theoryBlockTwo')
+let theoryTabTwo = document.getElementById("theoryTabTwo");
+let theoryBlockTwo = document.getElementById("theoryBlockTwo");
 function theoryTabTwoFunc() {
-    theoryTabOne.style.fontWeight = '400'
-    theoryTabTwo.style.fontWeight = 'bold'
-    theoryBlockOne.style.cssText = 'display:none'
-    theoryBlockTwo.style.cssText = 'display:block'
+  theoryTabOne.style.fontWeight = "400";
+  theoryTabTwo.style.fontWeight = "bold";
+  theoryBlockOne.style.cssText = "display:none";
+  theoryBlockTwo.style.cssText = "display:block";
 }
